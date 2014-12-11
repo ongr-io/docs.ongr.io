@@ -1,0 +1,5 @@
+build/*
+source/*.git
+
+.idea
+.DS_Store
