@@ -7,8 +7,8 @@ Why?
 Readthedocs compiles documentation from one repository only. We have many.
 So this repository clones other repositories defined in sources/.repos and lets you have documentation from a number of (public) repositories.
 
-How to test whether your documentation builds locally
------------------------------------------------------
+How to: Test whether your documentation builds locally
+------------------------------------------------------
 
 Refer to .travis.yml :-)
 or, alternatively:
@@ -18,6 +18,35 @@ or, alternatively:
     wget -q -O conf.py https://raw.githubusercontent.com/ongr-io/docs-aggregator/master/source/conf-travis.py
     mkdir _static
     sphinx-build -nW -b html -c . Resources/doc _build/html
+
+How to: enable documentation checking / documentation rebuild on merge in travis in your bundle
+-----------------------------------------------------------------------------------------------
+
+.travis.yml should contain the following lines
+
+in install section:
+::
+
+  - sudo pip install -q sphinx --use-mirrors
+  - wget -q -O conf.py https://raw.githubusercontent.com/ongr-io/docs-aggregator/master/source/conf-travis.py
+  - mkdir _static
+  
+in script section:
+::
+    - sphinx-build -nWq -b html -c . Resources/doc _build/html
+
+in after_script section:
+::
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && wget --post-data="" -q -O /dev/null http://readthedocs.org/build/ongr'
+
+and, while you're at it, you can enable cache for speeding up subsequent builds:
+::
+    cache:
+        directories:
+            - vendor/
+            - $HOME/.composer/cache
+
+of course, this step is completely optional :-)
 
 How to: PHP API documentation generator
 ---------------------------------------
