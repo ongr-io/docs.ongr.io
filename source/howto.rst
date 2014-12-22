@@ -28,6 +28,9 @@ if sphinx says ``unknown locale: UTF-8``, add the following lines to your ``.bas
 
 You will have to restart your terminal session.
 
+If sphinx says something along the lines of ``WARNING: master file ... not found``, check your conf.py file - it must not be empty. 
+Maybe your wget could not get the file from the repository?
+
 How to: enable documentation checking / documentation rebuild on merge in travis in your bundle
 -----------------------------------------------------------------------------------------------
 
