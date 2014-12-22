@@ -17,7 +17,7 @@ or, alternatively:
     sudo easy_install pip
     sudo pip install -q sphinx --use-mirrors
     # [ NB: execute the following commands in your projects' directory ]
-    wget -q -O conf.py https://raw.githubusercontent.com/ongr-io/docs-aggregator/master/source/conf-travis.py
+    wget -q -O conf.py https://raw.githubusercontent.com/ongr-io/ongr-handbook/master/source/conf-travis.py
     mkdir _static
     sphinx-build -nW -b html -c . Resources/doc _build/html
 
