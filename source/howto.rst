@@ -13,11 +13,20 @@ How to: Test whether your documentation builds locally
 Refer to .travis.yml :-)
 or, alternatively:
 ::
-
+    # [ NB: you must have python installed ]
+    sudo easy_install pip
     sudo pip install -q sphinx --use-mirrors
-    wget -q -O conf.py https://raw.githubusercontent.com/ongr-io/docs-aggregator/master/source/conf-travis.py
+    # [ NB: execute the following commands in your projects' directory ]
+    wget -q -O conf.py https://raw.githubusercontent.com/ongr-io/ongr-handbook/master/source/conf-travis.py
     mkdir _static
     sphinx-build -nW -b html -c . Resources/doc _build/html
+
+if sphinx says ``unknown locale: UTF-8``, add the following lines to your ``.bash_profile`` file:
+::
+    export LC_ALL=en_US.UTF-8
+    export LANG=en_US.UTF-8
+
+You will have to restart your terminal session.
 
 How to: enable documentation checking / documentation rebuild on merge in travis in your bundle
 -----------------------------------------------------------------------------------------------
