@@ -21,6 +21,13 @@ or, alternatively:
     mkdir _static
     sphinx-build -nW -b html -c . Resources/doc _build/html
 
+if sphinx says ``unknown locale: UTF-8``, add the following lines to your ``.bash_profile`` file:
+::
+    export LC_ALL=en_US.UTF-8
+    export LANG=en_US.UTF-8
+
+You will have to restart your terminal session.
+
 How to: enable documentation checking / documentation rebuild on merge in travis in your bundle
 -----------------------------------------------------------------------------------------------
 
