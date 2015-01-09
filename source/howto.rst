@@ -39,7 +39,7 @@ How to: enable documentation checking / documentation rebuild on merge in travis
 in install section:
 ::
 
-  - sudo pip install -q sphinx --use-mirrors
+  - sudo pip install -q sphinx
   - wget -q -O conf.py https://raw.githubusercontent.com/ongr-io/docs-aggregator/master/source/conf-travis.py
   - mkdir _static
   
