@@ -7,8 +7,3 @@ You can contribute to ONGR by forking the repository, then making changes and se
 Code must adhere to project's Coding Standards :doc:`/src/ONGR/DemoBundle/Resources/doc/coding_standards`.
 
 ONGR follows `TDD <http://en.wikipedia.org/wiki/Test-driven_development>`_ methodology, so code will be accepted faster, if the respective tests are provided with the PR.
-
-
-
-
-
