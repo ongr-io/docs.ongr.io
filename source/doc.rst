@@ -4,10 +4,10 @@ Documentation
 Contents:
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :titlesonly:
-    :glob:
 
-    sources/*/Resources/doc/index*
-
-
+    sources/ongr-sandbox.git/src/ONGR/DemoBundle/Resources/doc/quick_start.rst
+    handbook/requirements
+    sources/ConnectionsBundle.git/Resources/doc/index
+    handbook/contributing/index
