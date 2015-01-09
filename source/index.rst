@@ -1,13 +1,24 @@
-Welcome to documentation!
-=========================
+ONGR Documentation
+==================
 
-Contents:
+`ONGR <http://ongr.io>`_ - an open platform for scaling ecommerce. It’s fast. It scales! It’s fun!
+
+.. note:: This documentation is heavily **work in progress**.
+
+Contents
+--------
 
 .. toctree::
-   :maxdepth: 1
-   :titlesonly:
-   :glob:
+    :titlesonly:
 
-   doc*
-   api*
+    sources/ongr-sandbox.git/src/ONGR/DemoBundle/Resources/doc/index
+    handbook/requirements
+    connectors
+    customizations
+    handbook/contributing/index
 
+Community
+---------
+
+- `GitHub account <https://github.com/ongr-io>`_
+- `Gitter chat support <https://gitter.im/ongr-io/support>`_

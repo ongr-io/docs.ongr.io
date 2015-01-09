@@ -13,6 +13,7 @@ How to: Test whether your documentation builds locally
 Refer to .travis.yml :-)
 or, alternatively:
 ::
+
     # [ NB: you must have python installed ]
     sudo easy_install pip
     sudo pip install -q sphinx --use-mirrors
@@ -23,6 +24,7 @@ or, alternatively:
 
 if sphinx says ``unknown locale: UTF-8``, add the following lines to your ``.bash_profile`` file:
 ::
+
     export LC_ALL=en_US.UTF-8
     export LANG=en_US.UTF-8
 
@@ -45,14 +47,17 @@ in install section:
   
 in script section:
 ::
+
     - sphinx-build -nWq -b html -c . Resources/doc _build/html
 
 in after_script section:
 ::
+
     - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && wget --post-data="" -q -O /dev/null http://readthedocs.org/build/ongr'
 
 and, while you're at it, you can enable cache for speeding up subsequent builds:
 ::
+
     cache:
         directories:
             - vendor/
