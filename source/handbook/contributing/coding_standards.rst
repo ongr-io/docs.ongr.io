@@ -2,6 +2,7 @@
 Coding Standards
 ================
 
+.. include:: /handbook/snippets/stub.rst
 
 Introduction
 ------------
