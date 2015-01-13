@@ -1,5 +1,5 @@
-Whys, How tos & hows
-====================
+Writing and Building Documentation
+==================================
 
 Why?
 ----
@@ -139,4 +139,4 @@ It's a mystery!
 |mystery|
 
 
-.. |mystery| image:: images/mystery.gif
+.. |mystery| image:: /images/mystery.gif
