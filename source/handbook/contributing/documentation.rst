@@ -1,5 +1,5 @@
-Whys, How tos & hows
-====================
+Writing and Building Documentation
+==================================
 
 Why?
 ----
