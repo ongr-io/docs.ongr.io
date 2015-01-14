@@ -16,6 +16,7 @@ Contents
     connectors
     customizations
     handbook/contributing/index
+    sources/CookiesBundle.git/Resources/doc/index
 
 Community
 ---------
