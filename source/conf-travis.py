@@ -67,7 +67,7 @@ copyright = u'2015, ONGR Team'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['*.php', '**/vendor'] # 'API/*', '**/Tests'
+exclude_patterns = ['*.php', '**/vendor', 'handbook/snippets'] # 'API/*', '**/Tests'
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
