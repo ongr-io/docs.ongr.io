@@ -5,13 +5,13 @@ Data import related functionality
     :maxdepth: 2
     :titlesonly:
 
-    Import-related command overview <components/ConnectionsBundle/Resources/doc/Commands/index>
+    Import-related command overview <components/ConnectionsBundle/commands/index>
 
-    Importing <components/ConnectionsBundle/Resources/doc/import/import>
-    components/ConnectionsBundle/Resources/doc/sync/sync
+    Importing <components/ConnectionsBundle/import/import>
+    components/ConnectionsBundle/sync/sync
 
-    components/ConnectionsBundle/Resources/doc/pair_storage/pair_storage
-    components/ConnectionsBundle/Resources/doc/pipeline/pipeline
+    components/ConnectionsBundle/pair_storage/pair_storage
+    components/ConnectionsBundle/pipeline/pipeline
 
-    components/ConnectionsBundle/Resources/doc/url_invalidator/url_invalidator
+    components/ConnectionsBundle/url_invalidator/url_invalidator
 

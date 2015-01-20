@@ -1,3 +1,4 @@
 /build
 /source/components
+/source/_components
 !/source/components/.repos
