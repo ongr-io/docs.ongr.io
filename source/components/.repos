@@ -1,0 +1,6 @@
+# A list of urls to clone in (git source / doc path) tuples. ~ means Resources/doc.
+https://github.com/ongr-io/ConnectionsBundle ~
+https://github.com/ongr-io/ongr-sandbox src/ONGR/DemoBundle/Resources/doc
+https://github.com/ongr-io/MagentoConnectorBundle ~
+https://github.com/ongr-io/CookiesBundle ~
+https://github.com/ongr-io/ElasticsearchBundle ~

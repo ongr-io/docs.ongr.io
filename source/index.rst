@@ -11,12 +11,13 @@ Contents
 .. toctree::
     :titlesonly:
 
-    sources/ongr-sandbox.git/src/ONGR/DemoBundle/Resources/doc/index
+    components/ongr-sandbox/src/ONGR/DemoBundle/Resources/doc/index
     handbook/requirements
     connectors
     customizations
     handbook/contributing/index
-    sources/CookiesBundle.git/Resources/doc/index
+    components/CookiesBundle/Resources/doc/index
+    components/ElasticsearchBundle/Resources/doc/index
 
 Community
 ---------

@@ -5,10 +5,10 @@ Syncing Data
     :maxdepth: 1
     :titlesonly:
 
-    sources/ConnectionsBundle.git/Resources/doc/sync
-    sources/ConnectionsBundle.git/Resources/doc/diff_provider
-    sources/ConnectionsBundle.git/Resources/doc/binlog
-    sources/ConnectionsBundle.git/Resources/doc/sync_storage
-    sources/ConnectionsBundle.git/Resources/doc/extractor
-    sources/ConnectionsBundle.git/Resources/doc/continuous_sync
-    sources/ConnectionsBundle.git/Resources/doc/diff_import
+    components/ConnectionsBundle/Resources/doc/sync
+    components/ConnectionsBundle/Resources/doc/diff_provider
+    components/ConnectionsBundle/Resources/doc/binlog
+    components/ConnectionsBundle/Resources/doc/sync_storage
+    components/ConnectionsBundle/Resources/doc/extractor
+    components/ConnectionsBundle/Resources/doc/continuous_sync
+    components/ConnectionsBundle/Resources/doc/diff_import
