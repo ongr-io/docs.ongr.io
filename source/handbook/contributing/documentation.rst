@@ -5,7 +5,7 @@ Why?
 ----
 
 Readthedocs compiles documentation from one repository only. We have many.
-So this repository clones other repositories defined in sources/.repos and lets you have documentation from a number of (public) repositories.
+So this repository clones other repositories defined in components/.repos and lets you have documentation from a number of (public) repositories.
 
 How to: Test whether your documentation builds locally
 ------------------------------------------------------
@@ -126,7 +126,7 @@ As the following method makes sphinx sad, while using `:doc:` directive makes Gi
 Usage
 -----
 
-Add git repositories to sources/.repos file.
+Add git repositories to components/.repos file.
 Publish it on github, add as a project to readthedocs.
 Build and enjoy.
 
