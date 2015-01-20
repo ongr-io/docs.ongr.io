@@ -71,7 +71,8 @@ exclude_patterns = [
     '*.php',
     '**/vendor',
     'handbook/snippets',
-    'components/ConnectionsBundle/Resources/doc/index.rst',
+    'components/ConnectionsBundle/index.rst',
+    '_components',
 ]
 
 # The reST default role (used for this markup: `text`) to use for all

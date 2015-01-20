@@ -5,4 +5,4 @@ Connectors
     :maxdepth: 1
     :titlesonly:
 
-    Magento <components/MagentoConnectorBundle/Resources/doc/index>
+    Magento <components/MagentoConnectorBundle/index>
