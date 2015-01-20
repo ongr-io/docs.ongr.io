@@ -2,5 +2,5 @@
 
 execfile("conf-travis.py")
 
-# Pulling all repository components
+# Pulling all repository components.
 execfile("pull.py")
