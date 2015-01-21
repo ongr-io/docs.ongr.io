@@ -7,7 +7,7 @@ Introduction
 
 ONGR development follows `TDD <http://en.wikipedia.org/wiki/Test-driven_development>`_ methodology, so it's required that all code is covered with automated tests.
 
-ONGR uses PSR-2 and `Symfony coding standards`_ with `Symfony conventions <http://symfony.com/doc/current/contributing/code/conventions.html>`_. In addition, there are other rules we agreed on (listed below).
+ONGR uses PSR-2 and `Symfony Coding Standards`_ with `Symfony Conventions <http://symfony.com/doc/current/contributing/code/conventions.html>`_. In addition, there are other rules we agreed on (listed below).
 
 To check code quality for our requirements we prepared the rule set for `Code Sniffer <https://github.com/squizlabs/PHP_CodeSniffer>`_ available `here <https://github.com/ongr-io/ongr-strict-standard>`_.
 
