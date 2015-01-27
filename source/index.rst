@@ -18,6 +18,7 @@ Contents
     handbook/contributing/index
     components/CookiesBundle/Resources/doc/index
     components/ElasticsearchBundle/Resources/doc/index
+    components/RouterBundle/Resources/doc/index
 
 Community
 ---------
