@@ -14,7 +14,7 @@ Contents
     components/ongr-sandbox/src/ONGR/DemoBundle/Resources/doc/index
     handbook/requirements
     connectors
-    customizations
+    imports
     handbook/contributing/index
     components/CookiesBundle/Resources/doc/index
     components/ElasticsearchBundle/Resources/doc/index
