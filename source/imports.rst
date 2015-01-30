@@ -11,6 +11,7 @@ Data import related functionality
     components/ConnectionsBundle/Resources/doc/Sync/sync
 
     components/ConnectionsBundle/Resources/doc/PairStorage/index
-    Pipeline/pipeline
+    components/ConnectionsBundle/Resources/doc/Pipeline/pipeline
 
     components/ConnectionsBundle/Resources/doc/url_invalidator
+
