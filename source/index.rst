@@ -19,6 +19,7 @@ Contents
     components/CookiesBundle/index
     components/ElasticsearchBundle/index
     components/RouterBundle/index
+    components/MonitoringBundle/index
 
 Community
 ---------
