@@ -11,14 +11,14 @@ Contents
 .. toctree::
     :titlesonly:
 
-    components/ongr-sandbox/src/ONGR/DemoBundle/Resources/doc/index
+    components/ongr-sandbox/index
     handbook/requirements
     connectors
     imports
     handbook/contributing/index
-    components/CookiesBundle/Resources/doc/index
-    components/ElasticsearchBundle/Resources/doc/index
-    components/RouterBundle/Resources/doc/index
+    components/CookiesBundle/index
+    components/ElasticsearchBundle/index
+    components/RouterBundle/index
 
 Community
 ---------
