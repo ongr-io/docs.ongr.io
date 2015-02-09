@@ -25,7 +25,7 @@ Step 2. Add new bundles to AppKernel.
 Step 3. Writing uploader class.
 -------------------------------
 
-There is simple example just for uploading.
+This is a simple uploader class included as an example.
 
 .. code-block:: php
 
