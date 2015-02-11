@@ -144,9 +144,6 @@ latexpdf:
 	virtualenv venv && \
 	. venv/bin/activate && \
 	pip install -r requirements.txt && \
-	virtualenv venv && \
-	. venv/bin/activate && \
-	pip install -r requirements.txt && \
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo "Running LaTeX files through pdflatex..."
 	$(MAKE) -C $(BUILDDIR)/latex all-pdf
