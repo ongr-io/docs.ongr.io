@@ -22,7 +22,7 @@ This code example displays many of the standard's features (adapted from `Symfon
     /*
      * This file is part of the ONGR package.
      *
-     * Copyright (c) 2014-${YEAR} NFQ Technologies UAB
+     * (c) NFQ Technologies UAB <info@nfq.com>
      *
      * For the full copyright and license information, please view the LICENSE
      * file that was distributed with this source code.
