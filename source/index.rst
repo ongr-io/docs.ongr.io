@@ -12,7 +12,6 @@ Contents
     :titlesonly:
 
     components/ongr-sandbox/index
-    handbook/requirements
     connectors
     imports
     handbook/contributing/index
