@@ -1,8 +1,8 @@
 Testing
 =======
-To run tests you need to have Mysql, elastic search, PHP and PHP Unit. If you don't want to install it locally, we've prepared a virtual machine which will do the dirty work. Its the same VM, which is used for demo page, more details can be found on :doc:`/components/ongr-sandbox/index` page.
+To run tests you need to have MySQL, Elasticsearch, PHP and PHPUnit. If you don't want to install it locally, we've prepared a virtual machine which will do the dirty work. Its the same VM, which is used for demo page, more details can be found on :doc:`/components/ongr-sandbox/index` page.
 
-Each bundle can be tested separately. There is a `phpunit.xml` file in each bundle's root folder, so basically when you are in the root bundle directory (f.e. `/vendor/ongr/elasticsearch-bundle`), use command:
+Each bundle can be tested separately. There is a `phpunit.xml` file in each bundle's root folder, so basically when you are in the root bundle directory (e.g. `/vendor/ongr/elasticsearch-bundle`), use command:
 
 .. code-block:: bash
 
