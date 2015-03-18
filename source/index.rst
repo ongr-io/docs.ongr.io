@@ -19,6 +19,7 @@ Contents
     components/ElasticsearchBundle/index
     components/RouterBundle/index
     components/MonitoringBundle/index
+    components/SettingsBundle/index
 
 Community
 ---------
