@@ -17,6 +17,7 @@ Contents
     handbook/contributing/index
     components/CookiesBundle/index
     components/ElasticsearchBundle/index
+    components/FilterManagerBundle/index
     components/RouterBundle/index
     components/MonitoringBundle/index
     components/SettingsBundle/index
