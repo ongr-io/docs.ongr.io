@@ -21,7 +21,6 @@ Contents
     components/RouterBundle/index
     components/SettingsBundle/index
     components/MonitoringBundle/index
-    components/RouterBundle/index
     components/TranslationsBundle/index
     components/TaskMessengerBundle/index
     components/CurrencyExchangeBundle/index
