@@ -26,7 +26,7 @@ Contents
     components/TaskMessengerBundle/index
     components/CurrencyExchangeBundle/index
     components/CookiesBundle/index
-    ApiBundle
+    components/ApiBundle/index
     
 
 Community
