@@ -15,12 +15,19 @@ Contents
     connectors
     imports
     handbook/contributing/index
-    components/CookiesBundle/index
     components/ElasticsearchBundle/index
+    components/ContentBundle/index
     components/FilterManagerBundle/index
     components/RouterBundle/index
-    components/MonitoringBundle/index
     components/SettingsBundle/index
+    components/MonitoringBundle/index
+    components/RouterBundle/index
+    components/TranslationsBundle/index
+    components/TaskMessengerBundle/index
+    components/CurrencyExchangeBundle/index
+    components/CookiesBundle/index
+    ApiBundle
+    
 
 Community
 ---------
