@@ -2,7 +2,7 @@ Connectors
 ==========
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :titlesonly:
 
     Magento <components/MagentoConnectorBundle/index>
