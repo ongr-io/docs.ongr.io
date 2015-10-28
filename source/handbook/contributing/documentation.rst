@@ -139,4 +139,4 @@ It's a mystery!
 |mystery|
 
 
-.. |mystery| image:: /images/mystery.png
+.. |mystery| image:: /source/images/mystery.png
