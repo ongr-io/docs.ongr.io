@@ -1,13 +1,162 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>ONGR Docs {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body class="docs{% block body_class %}{% endblock %}">
+{% block body %}{% endblock %}
+
+<span class="overlay"></span>
+
+<nav class="main">
+    <div class="container">
+        <a href="{{ path('app_homepage') }}" class="brand">
+            <img src="{{ asset('images/logo.png') }}" height="70" alt="ONGR logo">
+        </a>
+
+        <div class="responsive-sidebar-nav">
+            <a href="#" class="toggle-slide menu-link btn">&#9776;</a>
+        </div>
+
+        <div class="switcher">
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-expanded="true">
+                    master
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">master</a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">1.0</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <ul class="main-nav">
+            <li class="nav-docs"><a href="{{ path('app_homepage') }}">Documentation</a></li>
+            <li class="nav-ongr-io"><a href="http://ongr.io" target="_blank">ONGR.io</a></li>
+            <li class="nav-github"><a href="https://github.com/ongr-io" target="_blank">Github</a></li>
+        </ul>
+    </div>
+</nav>
+
+<nav id="slide-menu" class="slide-menu" role="navigation">
+
+    <div class="brand">
+        <a href="/">
+            <img src="{{ asset('images/logo.png') }}" height="50">
+        </a>
+    </div>
+
+    <ul class="slide-main-nav">
+        <li><a href="/">Home</a></li>
+        <li class="nav-docs"><a href="{{ path('app_homepage') }}">Documentation</a></li>
+        <li class="nav-ongr-io"><a href="http://ongr.io" target="_blank">ONGR.io</a></li>
+        <li class="nav-github"><a href="https://github.com/ongr-io" target="_blank">Github</a></li>
+    </ul>
+
+    <div class="slide-docs-nav">
+        <h2>Documentation</h2>
+        <ul>
+            <li>Beginning
+                <ul>
+                    <li><a href="#">What is ONGR</a></li>
+                    <li><a href="#">Bundles</a></li>
+                    <li><a href="#">Contribution Guide</a></li>
+                </ul>
+            </li>
+            <li>Setup
+                <ul>
+                    <li><a href="#">Installation</a></li>
+                </ul>
+            </li>
+            <li>Some Bundle
+                <ul>
+                    <li><a href="#">Setup</a></li>
+                    <li><a href="#">How to use</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+
+<div class="docs-wrapper container">
+
+    <section class="sidebar">
+        <ul>
+            <li>Beginning
+                <ul>
+                    <li><a href="#">What is ONGR</a></li>
+                    <li><a href="#">Bundles</a></li>
+                    <li><a href="#">Contribution Guide</a></li>
+                </ul>
+            </li>
+            <li>Setup
+                <ul>
+                    <li><a href="#">Installation</a></li>
+                </ul>
+            </li>
+            <li>Some Bundle
+                <ul>
+                    <li><a href="#">Setup</a></li>
+                    <li><a href="#">How to use</a></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <div id="search">
+        <div id="search-wrapper">
+            <input placeholder="" type="text" id="search-input"/>
+            <i id="cross" class="icon"></i>
+        </div>
+    </div>
+
+    <article>
+        <h1>H1 Topic</h1>
+        <h2>Inserts</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <pre>
+            <code>
+                &lt;div class=&quot;brand&quot;&gt;
+                &lt;a href=&quot;/&quot;&gt;
+                &lt;img src=&quot;&#39;images/logo.png&#39;&quot; height=&quot;50&quot;&gt;
+                &lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;ul class=&quot;slide-main-nav&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav-docs&quot;&gt;&lt;a href=&quot;&#39;app_homepage&#39;&quot;&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav-ongr-io&quot;&gt;&lt;a href=&quot;http://ongr.io&quot; target=&quot;_blank&quot;&gt;ONGR.io&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav-github&quot;&gt;&lt;a href=&quot;https://github.com/ongr-io&quot; target=&quot;_blank&quot;&gt;Github&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            </code>
+        </pre>
+        <blockquote>
+            <p><strong>Note:</strong> <code>Lorem Ipsum</code> method is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text <code>id</code>.</p>
+        </blockquote>
+    </article>
+</div>
+
+<footer class="main">
+    {#<ul>#}
+        {#<li class="nav-docs"><a href="{{ path('app_homepage') }}">Documentation</a></li>#}
+        {#<li class="nav-ongr-io"><a href="http://ongr.io" target="_blank">ONGR.io</a></li>#}
+        {#<li class="nav-github"><a href="https://github.com/ongr-io" target="_blank">Github</a></li>#}
+    {#</ul>#}
+    <p>ONGR is a trademark of NFQ Technologies</p>
+</footer>
+
+<script src="{{ asset('js/script.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
 </html>
