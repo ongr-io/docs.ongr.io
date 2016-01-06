@@ -68,3 +68,29 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+#Elasticsearch Bundle
+ongr_elasticsearch:
+    analysis:
+        analyzer:
+            urlAnalyzer:
+                type: custom
+                tokenizer: keyword
+                filter: [lowercase]
+    connections:
+        default:
+            index_name: docs
+            analysis:
+                analyzer:
+                    - urlAnalyzer
+            settings:
+                number_of_shards: 1
+                number_of_replicas: 0
+                index:
+                    refresh_interval: -1
+
+    managers:
+        default:
+            connection: default
+            mappings:
+                - AppBundle
