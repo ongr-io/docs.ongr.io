@@ -77,12 +77,17 @@ ongr_elasticsearch:
                 type: custom
                 tokenizer: keyword
                 filter: [lowercase]
+            pathAnalyzer:
+                type: custom
+                tokenizer: path_hierarchy
+                filter: []
     connections:
         default:
             index_name: docs
             analysis:
                 analyzer:
                     - urlAnalyzer
+                    - pathAnalyzer
             settings:
                 number_of_shards: 1
                 number_of_replicas: 0
@@ -92,5 +97,12 @@ ongr_elasticsearch:
     managers:
         default:
             connection: default
+            profiler: true
             mappings:
                 - AppBundle
+
+
+ongr_router:
+    manager: es.manager.default
+    seo_routes:
+        content: AppBundle:Doc:document
