@@ -1,3 +1,11 @@
 app_homepage:
     path:     /
     defaults: { _controller: AppBundle:Home:index }
+
+sidebar_list:
+    path:     /list
+    defaults: { _controller: AppBundle:Sidebar:list }
+
+sidebar_tree:
+    path:     /tree
+    defaults: { _controller: AppBundle:Sidebar:tree }
