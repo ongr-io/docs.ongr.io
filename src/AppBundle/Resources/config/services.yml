@@ -1,3 +1,5 @@
 services:
     app.github.parser:
         class: AppBundle\Service\GithubParser
+        calls:
+            - [setGithubToken, [%github_token%]]
