@@ -13,5 +13,4 @@ class HomeController extends Controller
             []
         );
     }
-
 }
