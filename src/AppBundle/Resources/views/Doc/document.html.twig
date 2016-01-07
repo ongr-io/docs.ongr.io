@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block sidebar %}
+<li>{{ document.bundle }}
+    <ul>
+        <li><a href="#">How to do a thing</a></li>
+    </ul>
+</li>
+{{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <article>
+        {{ document.content|raw }}
+    </article>
+{% endblock %}

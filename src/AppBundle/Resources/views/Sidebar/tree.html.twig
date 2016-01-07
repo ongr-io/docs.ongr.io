@@ -1,0 +1,14 @@
+<li>Beginning
+    <ul>
+        <li><a href="#">What is ONGR</a></li>
+        <li><a href="#">Bundles</a></li>
+        <li><a href="#">Contribution Guide</a></li>
+    </ul>
+</li>
+<li>ONGR Bundles
+    <ul>
+        {% for bundle in bundles %}
+            <li><a href="/{{ bundle.value.key }}">{{ bundle.value.key }}</a></li>
+        {% endfor %}
+    </ul>
+</li>
