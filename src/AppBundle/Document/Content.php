@@ -28,7 +28,14 @@ class Content
     public $version;
 
     /**
-     * @ES\Property(name="path", type="string")
+     * @ES\Property(name="path", type="string",
+     *     options={
+     *     "index":"not_analyzed",
+     *     "fields"={
+     *         "tokens"={"type"="string", "analyzer"="pathAnalyzer"}
+     *      }
+     *     }
+     * )
      */
     public $path;
 
@@ -38,7 +45,7 @@ class Content
     public $category;
 
     /**
-     * @ES\Property(name="title", type="string", options={"index":"not_analyzed"})
+     * @ES\Property(name="bundle", type="string", options={"index":"not_analyzed"})
      */
     public $bundle;
 }
