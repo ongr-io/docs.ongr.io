@@ -3,3 +3,9 @@ services:
         class: AppBundle\Service\GithubParser
         calls:
             - [setGithubToken, [%github_token%]]
+
+    app.bundle_tree_path.extension:
+        class: AppBundle\Twig\BundleContentListExtension
+        arguments: ["@es.manager.default.content"]
+        tags:
+            - { name: twig.extension }

@@ -4,10 +4,9 @@
 
 {% block sidebar %}
 <li>{{ document.bundle }}
-    <ul>
-        <li><a href="#">How to do a thing</a></li>
-    </ul>
+    {{ bundle_content_tree(document.bundle) }}
 </li>
+
 {{ parent() }}
 {% endblock %}
 

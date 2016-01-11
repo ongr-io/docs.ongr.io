@@ -1,0 +1,21 @@
+footer.main {
+  background: #fbfbfb;
+  padding: 30px 20px;
+  text-align: center;
+  p {
+    color: $light_gray;
+    font-size: 16px;
+    margin-bottom: 10px;
+    a {
+      color: $grey;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+
+  footer.main ul {
+    display: none;
+  }
+
+}
