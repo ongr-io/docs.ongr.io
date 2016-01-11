@@ -13,22 +13,22 @@ class Content
     use SeoAwareTrait;
 
     /**
-     * @ES\Property(name="title", type="string")
+     * @ES\Property(type="string")
      */
     public $title;
 
     /**
-     * @ES\Property(name="content", type="string")
+     * @ES\Property(type="string")
      */
     public $content;
 
     /**
-     * @ES\Property(name="version", type="string", options={"index":"not_analyzed"})
+     * @ES\Property(type="string", options={"index":"not_analyzed"})
      */
     public $version;
 
     /**
-     * @ES\Property(name="path", type="string",
+     * @ES\Property(type="string",
      *     options={
      *     "index":"not_analyzed",
      *     "fields"={
@@ -40,12 +40,17 @@ class Content
     public $path;
 
     /**
-     * @ES\Property(name="category", type="string", options={"index":"not_analyzed"})
+     * @ES\Property(type="string", options={"index":"not_analyzed"})
      */
     public $category;
 
     /**
-     * @ES\Property(name="bundle", type="string", options={"index":"not_analyzed"})
+     * @ES\Property(type="string", options={"index":"not_analyzed"})
      */
     public $bundle;
+
+    /**
+     * @ES\Property(type="string", options={"index":"not_analyzed"})
+     */
+    public $sha;
 }
