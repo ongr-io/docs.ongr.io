@@ -7,77 +7,53 @@
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
-<body class="docs{% block body_class %}{% endblock %}">
+<body class="docs {% block body_class %}{% endblock %}">
+    <span class="overlay"></span>
+    <nav class="main">
+        <div class="container">
+            <a href="{{ path('app_homepage') }}" class="brand">
+                <img src="{{ asset('images/logo.png') }}" height="70" alt="ONGR logo">
+            </a>
 
-<span class="overlay"></span>
+            <ul class="main-nav">
+                <li class="nav-docs"><a href="{{ path('app_homepage') }}">Documentation</a></li>
+                <li class="nav-ongr-io"><a href="http://ongr.io" target="_blank">ONGR.io</a></li>
+                <li class="nav-github"><a href="https://github.com/ongr-io" target="_blank">Github</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<nav class="main">
-    <div class="container">
-        <a href="{{ path('app_homepage') }}" class="brand">
-            <img src="{{ asset('images/logo.png') }}" height="70" alt="ONGR logo">
-        </a>
+    <div class="docs-wrapper container">
 
-        <div class="responsive-sidebar-nav">
-            <a href="#" class="toggle-slide menu-link btn">&#9776;</a>
+        <section class="sidebar">
+            <ul>
+                {% block sidebar %}
+                {{ render(controller('AppBundle:Sidebar:tree')) }}
+                {% endblock %}
+            </ul>
+        </section>
+
+        <div id="search">
+            <div id="search-wrapper">
+                <input placeholder="" type="text" id="search-input"/>
+                {#<i class="search-icon"></i>#}
+            </div>
         </div>
 
-        {#<div class="switcher">#}
-            {#<div class="dropdown">#}
-                {#<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"#}
-                        {#aria-expanded="true">#}
-                    {#master#}
-                    {#<span class="caret"></span>#}
-                {#</button>#}
-                {#<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">#}
-                    {#<li role="presentation">#}
-                        {#<a role="menuitem" tabindex="-1" href="#">master</a>#}
-                    {#</li>#}
-                    {#<li role="presentation">#}
-                        {#<a role="menuitem" tabindex="-1" href="#">1.0</a>#}
-                    {#</li>#}
-                {#</ul>#}
-            {#</div>#}
-        {#</div>#}
-
-        <ul class="main-nav">
-            <li class="nav-docs"><a href="{{ path('app_homepage') }}">Documentation</a></li>
-            <li class="nav-ongr-io"><a href="http://ongr.io" target="_blank">ONGR.io</a></li>
-            <li class="nav-github"><a href="https://github.com/ongr-io" target="_blank">Github</a></li>
-        </ul>
-    </div>
-</nav>
-
-<div class="docs-wrapper container">
-
-    <section class="sidebar">
-        <ul>
-            {% block sidebar %}
-            {{ render(controller('AppBundle:Sidebar:tree')) }}
-            {% endblock %}
-        </ul>
-    </section>
-
-    <div id="search">
-        <div id="search-wrapper">
-            <input placeholder="" type="text" id="search-input"/>
-            <i id="cross" class="icon"></i>
-        </div>
+        {% block body %}
+        {% endblock %}
     </div>
 
-    {% block body %}
-    {% endblock %}
-</div>
+    <footer class="main">
+        {#<ul>#}
+            {#<li class="nav-docs"><a href="{{ path('app_homepage') }}">Documentation</a></li>#}
+            {#<li class="nav-ongr-io"><a href="http://ongr.io" target="_blank">ONGR.io</a></li>#}
+            {#<li class="nav-github"><a href="https://github.com/ongr-io" target="_blank">Github</a></li>#}
+        {#</ul>#}
+        <p>ONGR is a trademark of the NFQ Technologies</p>
+    </footer>
 
-<footer class="main">
-    {#<ul>#}
-        {#<li class="nav-docs"><a href="{{ path('app_homepage') }}">Documentation</a></li>#}
-        {#<li class="nav-ongr-io"><a href="http://ongr.io" target="_blank">ONGR.io</a></li>#}
-        {#<li class="nav-github"><a href="https://github.com/ongr-io" target="_blank">Github</a></li>#}
-    {#</ul>#}
-    <p>ONGR is a trademark of the NFQ Technologies</p>
-</footer>
-
-<script src="{{ asset('js/script.js') }}"></script>
-{% block javascripts %}{% endblock %}
+    <script src="{{ asset('js/script.js') }}"></script>
+    {% block javascripts %}{% endblock %}
 </body>
 </html>
