@@ -34,15 +34,19 @@ class MarkdownSyncCommand extends ContainerAwareCommand
 
         foreach ($repos as $repo) {
 
-            $readme = $github->getReadme($repo['org'], $repo['repo']);
-            $content = new Content();
-            $content->bundle = $repo['repo'];
-            $content->path = 'README.md';
-            $content->title = $repo['repo'];
-            $content->content = $parser->parse(base64_decode($readme['content']));
-            $content->url = '/'.$repo['repo'];
-            //$manager->persist($content);
-            //$manager->commit();
+            try {
+                $readme = $github->getReadme($repo['org'], $repo['repo']);
+                $content = new Content();
+                $content->bundle = $repo['repo'];
+                $content->path = 'README.md';
+                $content->title = $repo['repo'];
+                $content->content = $parser->parse(base64_decode($readme['content']));
+                $content->url = '/'.$repo['repo'];
+                $manager->persist($content);
+                $manager->commit();
+            } catch (\Exception $e) {
+                continue;
+            }
 
             $resources = [
                 'Resources/doc',
@@ -55,8 +59,18 @@ class MarkdownSyncCommand extends ContainerAwareCommand
                 $docs = array_merge($docs, $this->scanDirectory('', $repo['org'], $repo['repo'], $resource));
             }
 
-            foreach ($docs as $doc) {
+            foreach ($docs as $path => $resource) {
+                $file = $github->getClient()->api('repo')->contents()->show($repo['org'], $repo['repo'], $resource['path']);
 
+                $content = new Content();
+                $content->bundle = $repo['repo'];
+                $content->path = $path;
+                $content->title = explode('.', $resource['name'])[0];
+                $content->content = $parser->parse(base64_decode($file['content']));
+                $content->url = '/'.$repo['repo'] . '/' . $path;
+                $content->sha = $resource['sha'];
+                $manager->persist($content);
+                $manager->commit();
             }
         }
 
@@ -72,13 +86,11 @@ class MarkdownSyncCommand extends ContainerAwareCommand
         foreach ($dir as $resource) {
             switch ($resource['type']) {
                 case 'dir':
-                    $docs = array_merge($docs, $this->scanDirectory($name.$resource['name'].'/', $org, $repo, $path));
+                    $docs = array_merge($docs, $this->scanDirectory($name.$resource['name'].'/', $org, $repo, $resource['path']));
                     break;
                 case 'file':
-                    $name = explode($resource['name'], '.')[0];
-                    $docs[$name] = $resource;
-//                    $file = json_decode(file_get_contents($resource['git_url']));
-//                    $docs[$name] = $parser->parse(base64_decode($file['content']));
+                    $key = $name . explode('.', $resource['name'])[0];
+                    $docs[$key] = $resource;
                     break;
             }
         }
