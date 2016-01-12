@@ -5,6 +5,8 @@ namespace AppBundle\Command;
 use AppBundle\Document\Content;
 use cebe\markdown\GithubMarkdown;
 use Github\Client;
+use ONGR\ElasticsearchDSL\Query\MatchQuery;
+use ONGR\ElasticsearchDSL\Query\TermQuery;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,16 +25,29 @@ class MarkdownSyncCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $parser = new GithubMarkdown();
-        $parser->html5 = true;
-//        $content = $this->getContainer()->get('es.manager.default.content');
+        $parser = $this->getContainer()->get('app.markdown.parser');
 
         $github = $this->getContainer()->get('app.github.parser');
         $repos = $this->getContainer()->getParameter('repos');
 
         $manager = $this->getContainer()->get('es.manager.default');
+        $contentRepo = $this->getContainer()->get('es.manager.default.content');
 
         foreach ($repos as $repo) {
+
+            $parser->setBundle($repo['repo']);
+            $repoTermQuery = new MatchQuery('bundle', $repo['repo']);
+//            $orgTermQuery = new TermQuery('bundle', $repo['repo']);
+
+            $search = $contentRepo->createSearch()->addQuery($repoTermQuery)->setScroll();
+            $results = $contentRepo->execute($search);
+
+            foreach ($results as $document)
+            {
+                $manager->remove($document);
+            }
+            $manager->commit();
+            $manager->refresh();
 
             try {
                 $readme = $github->getReadme($repo['org'], $repo['repo']);
@@ -72,8 +87,8 @@ class MarkdownSyncCommand extends ContainerAwareCommand
                 $manager->persist($content);
                 $manager->commit();
             }
+            $manager->refresh();
         }
-
         $output->writeln('Ok, it\'s done!');
     }
 

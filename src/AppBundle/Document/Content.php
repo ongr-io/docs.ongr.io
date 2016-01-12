@@ -13,6 +13,10 @@ class Content
     use SeoAwareTrait;
 
     /**
+     * @ES\Id()
+     */
+    public $id;
+    /**
      * @ES\Property(type="string")
      */
     public $title;
