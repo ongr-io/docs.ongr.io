@@ -23,6 +23,7 @@
     "jquery": "~2.1.4",
     "modernizr": "~2.6",
     "jquery-viewport": "~0.2",
-    "font-awesome": "~4.0"
+    "font-awesome": "~4.0",
+    "prism": "^1.3"
   }
 }

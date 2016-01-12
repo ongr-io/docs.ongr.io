@@ -16,6 +16,8 @@ gulp.task('sass', function() {
     gulp.src(
         [
             dir.bower + 'font-awesome/css/font-awesome.min.css',
+            dir.bower + 'prism/themes/prism.css',
+            dir.bower + 'prism/plugins/line-numbers/prism-line-numbers.css',
             //dir.assets + 'temp.css',
             dir.assets + 'sass/style.scss'
         ])
@@ -32,7 +34,12 @@ gulp.task('scripts', function() {
         dir.bower + 'jquery/dist/jquery.min.js',
         dir.bower + 'modernizr/modernizr.js',
         dir.bower + 'bootstrap-sass/assets/javascripts/bootstrap.min.js',
-        dir.assets + 'script/script.js',
+        dir.bower + 'prism/prism.js',
+        dir.bower + 'prism/plugins/line-numbers/prism-line-numbers.min.js',
+        dir.bower + 'prism/components/prism-php.min.js',
+        dir.bower + 'prism/components/prism-twig.min.js',
+        dir.bower + 'prism/components/prism-yaml.min.js',
+        dir.assets + 'script/script.js'
     ])
         .pipe(concat('script.js'))
         //.pipe(uglify())
