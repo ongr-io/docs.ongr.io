@@ -833,16 +833,16 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v2.1.3",
+            "version": "v2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "7086a86cab241a77f19cdd653ae3d2e023b41699"
+                "reference": "add7f77f8e388d7d24df6d204c0be16bbb6c57c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/7086a86cab241a77f19cdd653ae3d2e023b41699",
-                "reference": "7086a86cab241a77f19cdd653ae3d2e023b41699",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/add7f77f8e388d7d24df6d204c0be16bbb6c57c4",
+                "reference": "add7f77f8e388d7d24df6d204c0be16bbb6c57c4",
                 "shasum": ""
             },
             "require": {
@@ -883,7 +883,7 @@
                 "elasticsearch",
                 "search"
             ],
-            "time": "2015-12-15 18:42:26"
+            "time": "2016-01-08 22:58:44"
         },
         {
             "name": "guzzle/guzzle",
@@ -1323,12 +1323,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ongr-io/ElasticsearchBundle.git",
-                "reference": "3a53ed9707c045bfdcef27bcdfcf1bf5bd2b4b95"
+                "reference": "0e25e0158e0583ea751c37ff7f157bdb32e2c389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ongr-io/ElasticsearchBundle/zipball/3a53ed9707c045bfdcef27bcdfcf1bf5bd2b4b95",
-                "reference": "3a53ed9707c045bfdcef27bcdfcf1bf5bd2b4b95",
+                "url": "https://api.github.com/repos/ongr-io/ElasticsearchBundle/zipball/0e25e0158e0583ea751c37ff7f157bdb32e2c389",
+                "reference": "0e25e0158e0583ea751c37ff7f157bdb32e2c389",
                 "shasum": ""
             },
             "require": {
@@ -1351,7 +1351,11 @@
             "autoload": {
                 "psr-4": {
                     "ONGR\\ElasticsearchBundle\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/",
+                    "/Test/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1365,7 +1369,7 @@
             ],
             "description": "Elasticsearch bundle for Symfony.",
             "homepage": "http://ongr.io",
-            "time": "2016-01-06 07:09:07"
+            "time": "2016-01-09 21:25:53"
         },
         {
             "name": "ongr/elasticsearch-dsl",
@@ -1417,12 +1421,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ongr-io/RouterBundle.git",
-                "reference": "a9c46699906b2719c354943cec08cd5cab14c89d"
+                "reference": "299eb0e59090a3487a629faf25cf411232fdd0d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ongr-io/RouterBundle/zipball/a9c46699906b2719c354943cec08cd5cab14c89d",
-                "reference": "a9c46699906b2719c354943cec08cd5cab14c89d",
+                "url": "https://api.github.com/repos/ongr-io/RouterBundle/zipball/299eb0e59090a3487a629faf25cf411232fdd0d8",
+                "reference": "299eb0e59090a3487a629faf25cf411232fdd0d8",
                 "shasum": ""
             },
             "require": {
@@ -1460,20 +1464,20 @@
                 "router",
                 "seo"
             ],
-            "time": "2016-01-05 08:37:37"
+            "time": "2016-01-06 09:39:43"
         },
         {
             "name": "paragonie/random_compat",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "d762ee5b099a29044603cd4649851e81aa66cb47"
+                "reference": "dd8998b7c846f6909f4e7a5f67fabebfc412a4f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/d762ee5b099a29044603cd4649851e81aa66cb47",
-                "reference": "d762ee5b099a29044603cd4649851e81aa66cb47",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/dd8998b7c846f6909f4e7a5f67fabebfc412a4f7",
+                "reference": "dd8998b7c846f6909f4e7a5f67fabebfc412a4f7",
                 "shasum": ""
             },
             "require": {
@@ -1508,7 +1512,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2015-12-10 14:48:13"
+            "time": "2016-01-06 13:31:20"
         },
         {
             "name": "psr/log",
@@ -1802,12 +1806,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing.git",
-                "reference": "88692f608345d378c91e9f8588a286b4405b7ef5"
+                "reference": "9a59d986e2238f6a47142bf4436248f44ee0b7fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/88692f608345d378c91e9f8588a286b4405b7ef5",
-                "reference": "88692f608345d378c91e9f8588a286b4405b7ef5",
+                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/9a59d986e2238f6a47142bf4436248f44ee0b7fb",
+                "reference": "9a59d986e2238f6a47142bf4436248f44ee0b7fb",
                 "shasum": ""
             },
             "require": {
@@ -1853,7 +1857,7 @@
                 "database",
                 "routing"
             ],
-            "time": "2016-01-01 14:52:27"
+            "time": "2016-01-09 13:00:37"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -2383,16 +2387,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.23.1",
+            "version": "v1.23.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6"
+                "reference": "ae53fc2c312fdee63773b75cb570304f85388b08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
-                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ae53fc2c312fdee63773b75cb570304f85388b08",
+                "reference": "ae53fc2c312fdee63773b75cb570304f85388b08",
                 "shasum": ""
             },
             "require": {
@@ -2440,7 +2444,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-11-05 12:49:06"
+            "time": "2016-01-11 14:02:19"
         }
     ],
     "packages-dev": [
