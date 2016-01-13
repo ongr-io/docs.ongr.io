@@ -1,0 +1,11 @@
+---
+- name: Deploy docs.ongr.io
+  hosts: stage
+  remote_user: dev
+  vars:
+    ansistrano_deploy_from: "./"
+    ansistrano_deploy_to: "/var/www/docs"
+    ansistrano_shared_paths: [app/logs, app/config/parameters.yml]
+    ansistrano_keep_releases: 5
+  roles:
+    - { role: carlosbuenosvinos.ansistrano-deploy }
