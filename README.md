@@ -18,7 +18,7 @@ Clone the repository:
 
 ```bash
 
-git clone https://github.com/ongr-io/handbook.git
+git clone https://github.com/ongr-io/docs.ongr.io.git
 
 ```
 
@@ -32,7 +32,21 @@ composer install --prefer-dist
 
 ```
 
-### Step 3 (optional)
+### Step 3
+
+Create elasticsearch index. Before creating index you might want to change index name and elasticsearch 
+connection settings. To do that take a look at the Symfony configuration file (`app/config/config.yml`) 
+under `ongr_elasticsearch` node.
+
+Run:
+
+```bash
+
+bin/console ongr:es:index:create
+
+```
+
+### Step 4 (optional)
 
 To run site quickly at the local env you can do it via PHP built-in server, run:
  
