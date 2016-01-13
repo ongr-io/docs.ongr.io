@@ -7,6 +7,7 @@ convert to HTML and index them in to the Elasticsearch.
 
     * Elasticsearch >=2.0
     * PHP >=5.5
+    * npm >= 3.0 from node.js
 
 ## Install
 
@@ -24,11 +25,23 @@ git clone https://github.com/ongr-io/docs.ongr.io.git
 
 ### Step 2
 
-Install vendors via [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx):
+Install vendors.
+
+Symfony vendors are installed  via [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx):
 
 ```bash
 
 composer install --prefer-dist
+
+```
+
+We build assets via [Gulp](http://gulpjs.com):
+
+```bash
+
+npm install
+bower install
+gulp
 
 ```
 
