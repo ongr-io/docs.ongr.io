@@ -12,6 +12,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\StyleInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 class MarkdownSyncCommand extends ContainerAwareCommand
 {
@@ -25,6 +27,9 @@ class MarkdownSyncCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $io = new SymfonyStyle($input, $output);
+        $io->title('Sync docs from Github repos.');
+
         $parser = $this->getContainer()->get('app.markdown.parser');
 
         $github = $this->getContainer()->get('app.github.parser');
@@ -33,8 +38,11 @@ class MarkdownSyncCommand extends ContainerAwareCommand
         $manager = $this->getContainer()->get('es.manager.default');
         $contentRepo = $this->getContainer()->get('es.manager.default.content');
 
+        $io->createProgressBar();
         foreach ($repos as $repo) {
 
+            $io->block("Starting sync with: ".$repo['org'].'/'.$repo['repo']);
+            $io->progressStart();
             $parser->setBundle($repo['repo']);
             $repoTermQuery = new MatchQuery('bundle', $repo['repo']);
 //            $orgTermQuery = new TermQuery('bundle', $repo['repo']);
@@ -59,6 +67,8 @@ class MarkdownSyncCommand extends ContainerAwareCommand
                 $content->url = '/'.$repo['repo'];
                 $manager->persist($content);
                 $manager->commit();
+
+                $io->progressAdvance();
             } catch (\Exception $e) {
                 continue;
             }
@@ -71,7 +81,7 @@ class MarkdownSyncCommand extends ContainerAwareCommand
 
             $docs = [];
             foreach ($resources as $resource) {
-                $docs = array_merge($docs, $this->scanDirectory('', $repo['org'], $repo['repo'], $resource));
+                $docs = array_merge($docs, $this->scanDirectory('', $repo['org'], $repo['repo'], $resource, $io));
             }
 
             foreach ($docs as $path => $resource) {
@@ -86,13 +96,16 @@ class MarkdownSyncCommand extends ContainerAwareCommand
                 $content->sha = $resource['sha'];
                 $manager->persist($content);
                 $manager->commit();
+
+                $io->progressAdvance();
             }
             $manager->refresh();
+            $io->progressFinish();
         }
-        $output->writeln('Ok, it\'s done!');
+        $io->comment("Finished sync with Github");
     }
 
-    private function scanDirectory($name, $org, $repo, $path) {
+    private function scanDirectory($name, $org, $repo, $path, StyleInterface $io = null) {
 
         $docs = [];
         $github = $this->getContainer()->get('app.github.parser');
@@ -108,6 +121,7 @@ class MarkdownSyncCommand extends ContainerAwareCommand
                     $docs[$key] = $resource;
                     break;
             }
+            $io ? $io->progressAdvance() : null;
         }
 
         return $docs;
