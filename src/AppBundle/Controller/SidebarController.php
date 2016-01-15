@@ -35,7 +35,7 @@ class SidebarController extends Controller
         $bundles = $results->getAggregation('bundle');
 
         $search = $content->createSearch();
-        $termFilter = new TermQuery('path', 'Commons');
+        $termFilter = new TermQuery('category', 'commons');
         $search->addFilter($termFilter);
         $search->setSize(100);
         $commons = $content->execute($search, Result::RESULTS_ARRAY);

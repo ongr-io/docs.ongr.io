@@ -8,9 +8,14 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
+        $content = $this->get('es.manager.default.content');
+        $homepage = $content->findOneBy(['bundle' => 'global-docs', 'path' => 'WhatIsONGR.md']);
+
         return $this->render(
-            'AppBundle:Home:index.html.twig',
-            []
+            'AppBundle:Doc:document.html.twig',
+            [
+                'document' => $homepage,
+            ]
         );
     }
 }
