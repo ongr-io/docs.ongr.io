@@ -1,0 +1,8 @@
+---
+- name: Rollback docs.ongr.io
+  hosts: stage
+  remote_user: dev
+  vars:
+    ansistrano_deploy_to: "/var/www/docs"
+  roles:
+    - { role: carlosbuenosvinos.ansistrano-rollback }
