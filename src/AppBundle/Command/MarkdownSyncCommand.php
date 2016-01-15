@@ -102,7 +102,7 @@ class MarkdownSyncCommand extends ContainerAwareCommand
             $manager->refresh();
             $io->progressFinish();
         }
-        $io->comment("Finished sync with Github");
+        $io->success("Finished sync with Github");
     }
 
     private function scanDirectory($name, $org, $repo, $path, StyleInterface $io = null) {
