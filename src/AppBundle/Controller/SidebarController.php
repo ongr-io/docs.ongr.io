@@ -34,16 +34,24 @@ class SidebarController extends Controller
         $results = $content->execute($search);
         $bundles = $results->getAggregation('bundle');
 
-        foreach ($bundles as $bundle)
-        {
-            $v = $bundle->getValue();
-        }
+        $search = $content->createSearch();
+        $termFilter = new TermQuery('path', 'Commons');
+        $search->addFilter($termFilter);
+        $search->setSize(100);
+        $commons = $content->execute($search, Result::RESULTS_ARRAY);
+
+
 
         return $this->render('AppBundle:Sidebar:tree.html.twig',
             [
                 'bundles' => $bundles,
+                'commons' => $commons,
             ]
         );
     }
 
+    private function getList($term, $add)
+    {
+
+    }
 }
