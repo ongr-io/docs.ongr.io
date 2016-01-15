@@ -1,8 +1,8 @@
-<li>Beginning
+<li>ONGR Commons
     <ul>
-        <li><a href="#">What is ONGR</a></li>
-        <li><a href="#">Bundles</a></li>
-        <li><a href="#">Contribution Guide</a></li>
+    {% for page in commons %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+    {% endfor %}
     </ul>
 </li>
 <li>ONGR Bundles

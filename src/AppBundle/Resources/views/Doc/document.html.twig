@@ -3,9 +3,11 @@
 {% block title %}{% endblock %}
 
 {% block sidebar %}
+{% if document.path != 'Commons' %}
 <li>{{ document.bundle }}
     {{ bundle_content_tree(document.bundle) }}
 </li>
+{% endif %}
 
 {{ parent() }}
 {% endblock %}

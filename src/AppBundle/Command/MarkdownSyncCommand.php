@@ -102,6 +102,39 @@ class MarkdownSyncCommand extends ContainerAwareCommand
             $manager->refresh();
             $io->progressFinish();
         }
+
+        $commonPages = $this->getContainer()->getParameter('commons');
+
+        $repoTermQuery = new MatchQuery('path', 'Commons');
+        $search = $contentRepo->createSearch()->addQuery($repoTermQuery)->setScroll();
+        $results = $contentRepo->execute($search);
+
+        foreach ($results as $document)
+        {
+            $manager->remove($document);
+        }
+        $manager->commit();
+        $manager->refresh();
+
+        $io->progressStart();
+        foreach ($commonPages as $repo) {
+
+            $file = $github->getClient()->api('repo')->contents()->show($repo['org'], $repo['repo'], $repo['path']);
+
+            $content = new Content();
+            $content->bundle = $repo['repo'];
+            $content->path = 'Commons';
+            $content->title = $repo['title'];
+            $content->content = $parser->parse(base64_decode($file['content']));
+            $content->url = '/common/'.explode('.', $repo['path'])[0];
+            $content->sha = $file['sha'];
+            $manager->persist($content);
+            $manager->commit();
+
+            $io->progressAdvance();
+        }
+        $io->progressFinish();
+
         $io->success("Finished sync with Github");
     }
 
