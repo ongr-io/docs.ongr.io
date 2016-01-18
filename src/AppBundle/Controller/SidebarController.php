@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use ONGR\ElasticsearchBundle\Result\Result;
 use ONGR\ElasticsearchDSL\Aggregation\TermsAggregation;
+use ONGR\ElasticsearchDSL\Query\MissingQuery;
 use ONGR\ElasticsearchDSL\Query\TermQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,7 +36,7 @@ class SidebarController extends Controller
         $bundles = $results->getAggregation('bundle');
 
         $search = $content->createSearch();
-        $termFilter = new TermQuery('category', 'commons');
+        $termFilter = new MissingQuery('bundle');
         $search->addFilter($termFilter);
         $search->setSize(100);
         $commons = $content->execute($search, Result::RESULTS_ARRAY);

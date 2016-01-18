@@ -46,12 +46,17 @@ class Content
     /**
      * @ES\Property(type="string", options={"index":"not_analyzed"})
      */
-    public $category;
+    public $bundle;
 
     /**
      * @ES\Property(type="string", options={"index":"not_analyzed"})
      */
-    public $bundle;
+    public $org;
+
+    /**
+     * @ES\Property(type="string", options={"index":"not_analyzed"})
+     */
+    public $repo;
 
     /**
      * @ES\Property(type="string", options={"index":"not_analyzed"})

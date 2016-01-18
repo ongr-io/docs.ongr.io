@@ -6,6 +6,7 @@ use AppBundle\Document\Content;
 use cebe\markdown\GithubMarkdown;
 use Github\Client;
 use ONGR\ElasticsearchDSL\Query\MatchQuery;
+use ONGR\ElasticsearchDSL\Query\MissingQuery;
 use ONGR\ElasticsearchDSL\Query\TermQuery;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -60,6 +61,8 @@ class MarkdownSyncCommand extends ContainerAwareCommand
             try {
                 $readme = $github->getReadme($repo['org'], $repo['repo']);
                 $content = new Content();
+                $content->org = $repo['org'];
+                $content->repo = $repo['repo'];
                 $content->bundle = $repo['repo'];
                 $content->path = 'README.md';
                 $content->title = $repo['repo'];
@@ -89,13 +92,14 @@ class MarkdownSyncCommand extends ContainerAwareCommand
                 $file = $github->getClient()->api('repo')->contents()->show($repo['org'], $repo['repo'], $resource['path']);
 
                 $content = new Content();
+                $content->org = $repo['org'];
+                $content->repo = $repo['repo'];
                 $content->bundle = $repo['repo'];
                 $content->path = $path;
                 $content->title = explode('.', $resource['name'])[0];
                 $content->content = $parser->parse(base64_decode($file['content']));
                 $content->url = '/'.$repo['repo'] . '/' . $path;
                 $content->sha = $resource['sha'];
-                $content->category = 'bundle';
                 $manager->persist($content);
                 $manager->commit();
 
@@ -107,7 +111,7 @@ class MarkdownSyncCommand extends ContainerAwareCommand
 
         $commonPages = $this->getContainer()->getParameter('commons');
 
-        $repoTermQuery = new MatchQuery('path', 'Commons');
+        $repoTermQuery = new MissingQuery('bundle');
         $search = $contentRepo->createSearch()->addQuery($repoTermQuery)->setScroll();
         $results = $contentRepo->execute($search);
 
@@ -118,15 +122,16 @@ class MarkdownSyncCommand extends ContainerAwareCommand
         $manager->commit();
         $manager->refresh();
 
+        $io->block("Starting sync single pages.");
         $io->progressStart();
         foreach ($commonPages as $repo) {
 
             $file = $github->getClient()->api('repo')->contents()->show($repo['org'], $repo['repo'], $repo['path']);
 
             $content = new Content();
-            $content->bundle = $repo['repo'];
+            $content->org = $repo['org'];
+            $content->repo = $repo['repo'];
             $content->path = $repo['path'];
-            $content->category = 'commons';
             $content->title = $repo['title'];
             $content->content = $parser->parse(base64_decode($file['content']));
             $content->url = '/common/'.explode('.', $repo['path'])[0];

@@ -3,7 +3,7 @@
 {% block title %}{% endblock %}
 
 {% block sidebar %}
-{% if document.category != 'commons' %}
+{% if document.bundle != '' %}
 <li>{{ document.bundle }}
     {{ bundle_content_tree(document.bundle) }}
 </li>
