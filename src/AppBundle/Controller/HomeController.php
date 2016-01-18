@@ -9,7 +9,7 @@ class HomeController extends Controller
     public function indexAction()
     {
         $content = $this->get('es.manager.default.content');
-        $homepage = $content->findOneBy(['bundle' => 'global-docs', 'path' => 'WhatIsONGR.md']);
+        $homepage = $content->findOneBy(['org' => 'ongr-io', 'repo' => 'global-docs', 'path' => 'WhatIsONGR.md']);
 
         return $this->render(
             'AppBundle:Doc:document.html.twig',
