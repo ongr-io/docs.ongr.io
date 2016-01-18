@@ -111,8 +111,8 @@ class MarkdownSyncCommand extends ContainerAwareCommand
 
         $commonPages = $this->getContainer()->getParameter('commons');
 
-        $repoTermQuery = new MissingQuery('bundle');
-        $search = $contentRepo->createSearch()->addQuery($repoTermQuery)->setScroll();
+        $repoMissing = new MissingQuery('bundle');
+        $search = $contentRepo->createSearch()->addFilter($repoMissing)->setScroll();
         $results = $contentRepo->execute($search);
 
         foreach ($results as $document)
