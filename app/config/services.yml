@@ -13,7 +13,7 @@ parameters:
         - {org: ongr-io, repo: SettingsBundle}
     commons:
         - {title: "What is ONGR", org: ongr-io, repo: global-docs, path: WhatIsONGR.md}
-        - {title: "ONGR Demo app", org: ongr-io, repo: Demo, path: README.md}
+        - {title: "ONGR Demo app", org: ongr-io, repo: demo.ongr.io, path: README.md}
         - {title: "Contributing to ONGR", org: ongr-io, repo: global-docs, path: Contributing.md}
 
 services:
