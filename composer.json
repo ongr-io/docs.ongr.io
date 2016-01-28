@@ -1,6 +1,6 @@
 {
-    "name": "simas/sf3",
-    "license": "proprietary",
+    "name": "ongr/docs",
+    "license": "MIT",
     "type": "project",
     "autoload": {
         "psr-4": {
