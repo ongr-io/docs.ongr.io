@@ -2,10 +2,8 @@
 
 namespace AppBundle\Twig;
 
-use AppBundle\Document\Content;
 use ONGR\ElasticsearchBundle\Result\Result;
 use ONGR\ElasticsearchBundle\Service\Repository;
-use ONGR\ElasticsearchDSL\Filter\NotFilter;
 use ONGR\ElasticsearchDSL\Query\MatchQuery;
 use ONGR\ElasticsearchDSL\Query\TermQuery;
 
@@ -65,10 +63,9 @@ class BundleContentListExtension extends \Twig_Extension
         #TODO Should be exchanged to path hierarchy aggregation or smth.
         $matchQuery = new MatchQuery('bundle', $bundle);
         $termFilter = new TermQuery('path', 'README.md');
-        $notFilter = new NotFilter($termFilter);
 
         $search = $this->repository->createSearch();
-        $search->addFilter($notFilter);
+        $search->addQuery($termFilter);
         $search->addQuery($matchQuery);
         $search->setSize(1000);
 
@@ -111,7 +108,7 @@ class BundleContentListExtension extends \Twig_Extension
         $html = '<ul class="'.$class.'">';
         foreach ($array as $key => $node) {
             if (is_object($node)) {
-                $html .= '<li><a href="'.$node->url.'">'.$this->prepareTitle($node->title).'</a></li>';
+                $html .= '<li><a href="'.$node->getUrl().'">'.$this->prepareTitle($node->title).'</a></li>';
             } else {
                 $html .= '<li>'.'<a class="sidebar-dropdown" href="javascript:void(1)">'.$this->prepareTitle($key).'</a>';
 //                $html .= $this->renderToHtmlList($node, 'hidden');

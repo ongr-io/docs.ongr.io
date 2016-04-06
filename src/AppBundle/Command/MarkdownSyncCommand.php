@@ -67,7 +67,7 @@ class MarkdownSyncCommand extends ContainerAwareCommand
                 $content->path = 'README.md';
                 $content->title = $repo['repo'];
                 $content->content = $parser->parse(base64_decode($readme['content']));
-                $content->url = '/'.$repo['repo'];
+                $content->setUrl('/'.$repo['repo']);
                 $content->category = 'bundle-homepage';
                 $manager->persist($content);
                 $manager->commit();
@@ -98,7 +98,7 @@ class MarkdownSyncCommand extends ContainerAwareCommand
                 $content->path = $path;
                 $content->title = explode('.', $resource['name'])[0];
                 $content->content = $parser->parse(base64_decode($file['content']));
-                $content->url = '/'.$repo['repo'] . '/' . $path;
+                $content->setUrl('/'.$repo['repo'] . '/' . $path);
                 $content->sha = $resource['sha'];
                 $manager->persist($content);
                 $manager->commit();
@@ -134,7 +134,7 @@ class MarkdownSyncCommand extends ContainerAwareCommand
             $content->path = $repo['path'];
             $content->title = $repo['title'];
             $content->content = $parser->parse(base64_decode($file['content']));
-            $content->url = '/common/'.explode('.', $repo['path'])[0];
+            $content->setUrl('/common/'.explode('.', $repo['path'])[0]);
             $content->sha = $file['sha'];
             $manager->persist($content);
             $manager->commit();

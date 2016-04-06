@@ -97,7 +97,6 @@ ongr_elasticsearch:
     managers:
         default:
             connection: default
-            profiler: true
             mappings:
                 - AppBundle
 
@@ -105,4 +104,4 @@ ongr_elasticsearch:
 ongr_router:
     manager: es.manager.default
     seo_routes:
-        content: AppBundle:Doc:document
+        'AppBundle:Content': AppBundle:Doc:Document
