@@ -3,6 +3,7 @@
 namespace AppBundle\Document;
 
 use ONGR\ElasticsearchBundle\Annotation as ES;
+use ONGR\ElasticsearchBundle\Collection\Collection;
 use ONGR\RouterBundle\Document\SeoAwareTrait;
 
 /**
@@ -62,4 +63,27 @@ class Content
      * @ES\Property(type="string", options={"index":"not_analyzed"})
      */
     public $sha;
+
+    /**
+     * @var Collection
+     *
+     * @ES\Embedded(class="AppBundle:Paragraph", multiple=true)
+     */
+    public $headlines;
+
+    /**
+     * @var Collection
+     *
+     * @ES\Embedded(class="AppBundle:Paragraph", multiple=true)
+     */
+    public $paragraphs;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->headlines = new Collection();
+        $this->paragraphs = new Collection();
+    }
 }

@@ -81,6 +81,29 @@ class MarkDownParser extends GithubMarkdown
         . '>' . $this->renderAbsy($block['text']) . '</a>';
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function parseBlocks($lines)
+    {
+        if (!is_array($lines)) {
+            $lines = explode("\n", $lines);
+        }
+
+        return parent::parseBlocks($lines);
+    }
+
+    /**
+     * Renders content as a text
+     *
+     * @param array $blocks
+     *
+     * @return string
+     */
+    public function renderAbsyText($blocks)
+    {
+        return rtrim(strip_tags(parent::renderAbsy($blocks)));
+    }
 // Line numbers
 // TODO Do we need code line numbers?
 //    protected function renderCode($block)

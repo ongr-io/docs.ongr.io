@@ -100,7 +100,6 @@ ongr_elasticsearch:
             mappings:
                 - AppBundle
 
-
 ongr_router:
     manager: es.manager.default
     seo_routes:
