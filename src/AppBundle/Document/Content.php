@@ -65,6 +65,13 @@ class Content
     public $sha;
 
     /**
+     * @var string
+     *
+     * @ES\Property(type="string")
+     */
+    public $description = '';
+
+    /**
      * @var Collection
      *
      * @ES\Embedded(class="AppBundle:Paragraph", multiple=true)

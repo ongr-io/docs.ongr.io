@@ -212,10 +212,13 @@ class MarkdownSyncCommand extends ContainerAwareCommand
                     $content->title = $parser->renderAbsyText([$block]);
                 }
             } else {
-                $content->paragraphs[] = new Paragraph($parser->renderAbsyText([$block]), $block[0] == 'code' ? 0 : 1);
+                $absyText = $parser->renderAbsyText([$block]);
+                $content->paragraphs[] = new Paragraph($absyText, 1);
+                $content->description .= $block[0] == 'code' ? '[code] ' : $absyText . ' ';
             }
         }
 
+        $content->description = rtrim(substr($content->description, 0, 245), " \t\n\r\0\x0B.") . '...';
         $content->title = !$content->title
             ? (isset($content->headlines[0]) ? $content->headlines[0]->getValue() : null)
             : $content->title;
