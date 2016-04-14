@@ -145,6 +145,7 @@ class MarkdownSyncCommand extends ContainerAwareCommand
             $content->setRepo($repo['repo']);
             $content->setPath($repo['path']);
             $content->setTitle($content->getTitle() ?: $repo['title']);
+            $content->setMenuTitle($repo['title']);
             $content->setContent($parser->parse(base64_decode($file['content'])));
             $content->setUrl('/common/'.explode('.', $repo['path'])[0]);
             $content->setSha($file['sha']);
