@@ -66,12 +66,12 @@ class MarkdownSyncCommand extends ContainerAwareCommand
 
                 $readme = $github->getReadme($repo['org'], $repo['repo']);
                 $this->parseSearchData($content, $readme);
-                $content->org = $repo['org'];
-                $content->repo = $repo['repo'];
-                $content->bundle = $repo['repo'];
-                $content->path = 'README.md';
-                $content->title = $content->title ?: $repo['repo'];
-                $content->content = $parser->parse(base64_decode($readme['content']));
+                $content->setOrg($repo['org']);
+                $content->setRepo($repo['repo']);
+                $content->setBundle($repo['repo']);
+                $content->setPath('README.md');
+                $content->setTitle($content->getTitle() ?: $repo['repo']);
+                $content->setContent($parser->parse(base64_decode($readme['content'])));
                 $content->setUrl('/'.$repo['repo']);
                 $content->category = 'bundle-homepage';
                 $manager->persist($content);
@@ -102,15 +102,15 @@ class MarkdownSyncCommand extends ContainerAwareCommand
 
                 $content = new Content();
                 $this->parseSearchData($content, $file);
-                $content->org = $repo['org'];
-                $content->repo = $repo['repo'];
-                $content->bundle = $repo['repo'];
-                $content->path = $path;
-                $content->title = $content->title ?: explode('.', $resource['name'])[0];
-                $content->menuTitle = explode('.', $resource['name'])[0];
-                $content->content = $parser->parse(base64_decode($file['content']));
+                $content->setOrg($repo['org']);
+                $content->setRepo($repo['repo']);
+                $content->setBundle($repo['repo']);
+                $content->setPath($path);
+                $content->setTitle($content->getTitle() ?: explode('.', $resource['name'])[0]);
+                $content->setMenuTitle(explode('.', $resource['name'])[0]);
+                $content->setContent($parser->parse(base64_decode($file['content'])));
                 $content->setUrl('/'.$repo['repo'] . '/' . $path);
-                $content->sha = $resource['sha'];
+                $content->setSha($resource['sha']);
                 $manager->persist($content);
                 $manager->commit();
 
@@ -141,13 +141,13 @@ class MarkdownSyncCommand extends ContainerAwareCommand
 
             $content = new Content();
             $this->parseSearchData($content, $file);
-            $content->org = $repo['org'];
-            $content->repo = $repo['repo'];
-            $content->path = $repo['path'];
-            $content->title = $content->title ?: $repo['title'];
-            $content->content = $parser->parse(base64_decode($file['content']));
+            $content->setOrg($repo['org']);
+            $content->setRepo($repo['repo']);
+            $content->setPath($repo['path']);
+            $content->setTitle($content->getTitle() ?: $repo['title']);
+            $content->setContent($parser->parse(base64_decode($file['content'])));
             $content->setUrl('/common/'.explode('.', $repo['path'])[0]);
-            $content->sha = $file['sha'];
+            $content->setSha($file['sha']);
             $manager->persist($content);
             $manager->commit();
 
@@ -208,20 +208,24 @@ class MarkdownSyncCommand extends ContainerAwareCommand
 
         foreach ($blocks as $key => $block) {
             if ($block[0] == 'headline') {
-                $content->headlines[] = new Paragraph($parser->renderAbsyText([$block]), $block['level']);
-                if (!$content->title && $block['level'] == 1 && $block['content'][0][0] == 'text') {
-                    $content->title = $parser->renderAbsyText([$block]);
+                $content->addHeadline(new Paragraph($parser->renderAbsyText([$block]), $block['level']));
+                if (!$content->getTitle() && $block['level'] == 1 && $block['content'][0][0] == 'text') {
+                    $content->setTitle($parser->renderAbsyText([$block]));
                 }
             } else {
                 $absyText = $parser->renderAbsyText([$block]);
-                $content->paragraphs[] = new Paragraph($absyText, 1);
-                $content->description .= $block[0] == 'code' ? '[code] ' : $absyText . ' ';
+                $content->addParagraph(new Paragraph($absyText, 1));
+                $content->setDescription(
+                    $content->getDescription() . ($block[0] == 'code' ? '[code] ' : $absyText . ' ')
+                );
             }
         }
 
-        $content->description = rtrim(substr($content->description, 0, 245), " \t\n\r\0\x0B.") . '...';
-        $content->title = !$content->title
-            ? (isset($content->headlines[0]) ? $content->headlines[0]->getValue() : null)
-            : $content->title;
+        $content->setDescription(rtrim(substr($content->getDescription(), 0, 245), " \t\n\r\0\x0B.") . '...');
+        $content->setTitle(
+            !$content->getTitle()
+                ? (isset($content->getHeadlines()[0]) ? $content->getHeadlines()[0]->getValue() : null)
+                : $content->getTitle()
+        );
     }
 }

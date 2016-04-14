@@ -2,6 +2,7 @@
 
 namespace AppBundle\Twig;
 
+use AppBundle\Document\Content;
 use ONGR\ElasticsearchBundle\Result\Result;
 use ONGR\ElasticsearchBundle\Service\Repository;
 use ONGR\ElasticsearchDSL\Query\BoolQuery;
@@ -73,7 +74,7 @@ class BundleContentListExtension extends \Twig_Extension
 
         $tree = [];
         foreach ($results as $doc) {
-            $path = explode('/', $doc->path);
+            $path = explode('/', $doc->getPath());
             $tree = array_merge_recursive($tree, $this->pathToDoc($path, [], $doc));
         }
 
@@ -106,9 +107,11 @@ class BundleContentListExtension extends \Twig_Extension
     private function renderToHtmlList($array, $class = "")
     {
         $html = '<ul class="'.$class.'">';
+
+        /** @var Content $node */
         foreach ($array as $key => $node) {
             if (is_object($node)) {
-                $html .= '<li><a href="'.$node->getUrl().'">'.$this->prepareTitle($node->menuTitle).'</a></li>';
+                $html .= '<li><a href="'.$node->getUrl().'">'.$this->prepareTitle($node->getMenuTitle()).'</a></li>';
             } else {
                 $html .= '<li>'.'<a class="sidebar-dropdown" href="javascript:void(1)">'.$this->prepareTitle($key).'</a>';
 //                $html .= $this->renderToHtmlList($node, 'hidden');
