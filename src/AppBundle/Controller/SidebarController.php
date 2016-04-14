@@ -3,11 +3,11 @@
 namespace AppBundle\Controller;
 
 use ONGR\ElasticsearchBundle\Result\Result;
+use ONGR\ElasticsearchBundle\Service\Repository;
 use ONGR\ElasticsearchDSL\Aggregation\TermsAggregation;
 use ONGR\ElasticsearchDSL\Query\MissingQuery;
 use ONGR\ElasticsearchDSL\Query\TermQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 class SidebarController extends Controller
 {
@@ -20,8 +20,9 @@ class SidebarController extends Controller
         );
     }
 
-    public function treeAction(Request $request)
+    public function treeAction()
     {
+        /** @var Repository $content */
         $content = $this->get('es.manager.default.content');
 
         $termFilter = new TermQuery('path', 'README.md');
@@ -41,18 +42,11 @@ class SidebarController extends Controller
         $search->setSize(100);
         $commons = $content->execute($search, Result::RESULTS_ARRAY);
 
-
-
         return $this->render('AppBundle:Sidebar:tree.html.twig',
             [
                 'bundles' => $bundles,
                 'commons' => $commons,
             ]
         );
-    }
-
-    private function getList($term, $add)
-    {
-
     }
 }

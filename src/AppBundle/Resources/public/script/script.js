@@ -55,6 +55,9 @@
                     },
                     select: function (event, ui) {
                         window.location = ui.item.url;
+                    },
+                    focus: function(event) {
+                        // console.log($(event.relatedTarget).css('color', 'green'));
                     }
                 }
             );
@@ -62,9 +65,11 @@
             $(g.search.autocomplete).data('ui-autocomplete')._renderItem = function (ul, item) {
                 return $("<li></li>")
                     .data("item.autocomplete", item)
-                    .append($('<span>')
-                        .append($('<strong>').text(item.label))
-                        .append($('<br><small>' + item.description + '</small>')))
+                    .append(
+                        $('<span>')
+                            .append($('<strong>').text(item.label))
+                            .append($('<br><small>' + item.description + '</small>'))
+                    )
                     .appendTo(ul);
             };
 

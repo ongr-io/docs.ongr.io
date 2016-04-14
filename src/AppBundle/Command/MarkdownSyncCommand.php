@@ -107,6 +107,7 @@ class MarkdownSyncCommand extends ContainerAwareCommand
                 $content->bundle = $repo['repo'];
                 $content->path = $path;
                 $content->title = $content->title ?: explode('.', $resource['name'])[0];
+                $content->menuTitle = explode('.', $resource['name'])[0];
                 $content->content = $parser->parse(base64_decode($file['content']));
                 $content->setUrl('/'.$repo['repo'] . '/' . $path);
                 $content->sha = $resource['sha'];

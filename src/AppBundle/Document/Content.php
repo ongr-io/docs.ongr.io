@@ -72,6 +72,13 @@ class Content
     public $description = '';
 
     /**
+     * @var string
+     *
+     * @ES\Property(type="string")
+     */
+    public $menuTitle;
+
+    /**
      * @var Collection
      *
      * @ES\Embedded(class="AppBundle:Paragraph", multiple=true)
