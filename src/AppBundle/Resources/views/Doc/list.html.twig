@@ -1,13 +1,14 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-    <article>
+    <article class="search-results">
         {% for content in results %}
-            <a href="{{ content.url }}">
-                <h2>{{ content.title }}</h2>
+            <div>
+                <a href="{{ content.url }}">
+                    <h2>{{ content.title }}</h2>
+                </a>
                 <p>{{ content.description }}</p>
-            </a>
-            {% if not loop.last and loop.index < 10 %}<hr/>{% endif %}
+            </div>
         {% else %}
             <strong>No results found!</strong>
         {% endfor %}

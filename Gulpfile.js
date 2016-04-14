@@ -16,7 +16,7 @@ gulp.task('sass', function() {
     gulp.src(
         [
             dir.bower + 'font-awesome/css/font-awesome.min.css',
-            dir.bower + 'jquery-ui/themes/ui-lightness/jquery-ui.min.css',
+            dir.bower + 'jquery-ui/themes/base/jquery-ui.min.css',
             dir.bower + 'prism/themes/prism.css',
             dir.bower + 'prism/plugins/line-numbers/prism-line-numbers.css',
             //dir.assets + 'temp.css',

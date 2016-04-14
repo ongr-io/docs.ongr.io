@@ -55,15 +55,12 @@
                     },
                     select: function (event, ui) {
                         window.location = ui.item.url;
-                    },
-                    focus: function(event) {
-                        // console.log($(event.relatedTarget).css('color', 'green'));
                     }
                 }
             );
 
             $(g.search.autocomplete).data('ui-autocomplete')._renderItem = function (ul, item) {
-                return $("<li></li>")
+                return $('<li class="autocomplete-result">')
                     .data("item.autocomplete", item)
                     .append(
                         $('<span>')
