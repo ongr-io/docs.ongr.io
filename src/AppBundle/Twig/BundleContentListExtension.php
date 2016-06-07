@@ -2,10 +2,11 @@
 
 namespace AppBundle\Twig;
 
+use AppBundle\Document\Content;
 use ONGR\ElasticsearchBundle\Result\Result;
 use ONGR\ElasticsearchBundle\Service\Repository;
+use ONGR\ElasticsearchDSL\Query\BoolQuery;
 use ONGR\ElasticsearchDSL\Query\MatchQuery;
-use ONGR\ElasticsearchDSL\Query\TermQuery;
 
 class BundleContentListExtension extends \Twig_Extension
 {
@@ -61,19 +62,19 @@ class BundleContentListExtension extends \Twig_Extension
     public function getBundleContentTree($bundle)
     {
         #TODO Should be exchanged to path hierarchy aggregation or smth.
-        $matchQuery = new MatchQuery('bundle', $bundle);
-        $termFilter = new TermQuery('path', 'README.md');
+        $query = new BoolQuery();
+        $query->add(new MatchQuery('path', 'README.md'), BoolQuery::MUST_NOT);
+        $query->add(new MatchQuery('bundle', $bundle), BoolQuery::MUST);
 
         $search = $this->repository->createSearch();
-        $search->addQuery($termFilter);
-        $search->addQuery($matchQuery);
+        $search->addQuery($query);
         $search->setSize(1000);
 
         $results = $this->repository->execute($search, Result::RESULTS_OBJECT);
 
         $tree = [];
         foreach ($results as $doc) {
-            $path = explode('/', $doc->path);
+            $path = explode('/', $doc->getPath());
             $tree = array_merge_recursive($tree, $this->pathToDoc($path, [], $doc));
         }
 
@@ -106,9 +107,11 @@ class BundleContentListExtension extends \Twig_Extension
     private function renderToHtmlList($array, $class = "")
     {
         $html = '<ul class="'.$class.'">';
+
+        /** @var Content $node */
         foreach ($array as $key => $node) {
             if (is_object($node)) {
-                $html .= '<li><a href="'.$node->getUrl().'">'.$this->prepareTitle($node->title).'</a></li>';
+                $html .= '<li><a href="'.$node->getUrl().'">'.$this->prepareTitle($node->getMenuTitle()).'</a></li>';
             } else {
                 $html .= '<li>'.'<a class="sidebar-dropdown" href="javascript:void(1)">'.$this->prepareTitle($key).'</a>';
 //                $html .= $this->renderToHtmlList($node, 'hidden');

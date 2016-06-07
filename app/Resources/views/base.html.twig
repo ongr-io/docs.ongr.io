@@ -33,13 +33,11 @@
             </ul>
         </section>
 
-        {#Disabled until it will be implemented#}
-        {#<div id="search">#}
-            {#<div id="search-wrapper">#}
-                {#<input placeholder="" type="text" id="search-input"/>#}
-                {#<i class="search-icon"></i>#}
-            {#</div>#}
-        {#</div>#}
+        <form action="{{ path('app_search_page') }}" method="get" id="search">
+            <div id="search-wrapper">
+                <input name="q" placeholder="Search..." type="text" id="search-input" value="{{ term|default }}">
+            </div>
+        </form>
 
         {% block body %}
         {% endblock %}
