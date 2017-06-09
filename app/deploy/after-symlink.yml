@@ -1,3 +1,0 @@
----
-  - name: Reset OPcache
-    command: "curl localhost/iFEzvlepqNf.php"

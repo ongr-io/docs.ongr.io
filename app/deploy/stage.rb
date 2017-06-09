@@ -1,0 +1,1 @@
+server '10.3.1.6', user: 'docs', roles: %w{web}
