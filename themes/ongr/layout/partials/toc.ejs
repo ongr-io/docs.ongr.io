@@ -1,0 +1,19 @@
+<ul class="menu-root">
+    <% type !== 'api' && site.pages.find({type: type}).sort('order').each(function (p) { %>
+        <% var fileName = p.path.replace(/^.+?\/([\w-]+)\.html/, '$1') %>
+        <% if (type === 'guide') { %>
+            <% if (fileName === 'index') { %>
+                <li><h3>Documentation</h3></li>
+            <% } %>
+        <% } %>
+        <li>
+            <a href="<%- url_for(p.path) %>" class="sidebar-link<%- page.title === p.title ? ' current' : '' %><%- p.is_new ? ' new' : '' %>"><%- p.title %></a>
+        </li>
+    <% }) %>
+    <li><h3>Other bundles</h3></li>
+    <% site.posts.sort('date', -1).each(function (p) { %>
+        <li>
+            <a href="<%- url_for(p.path) %>" class="sidebar-link"><%- p.title %></a>
+        </li>
+    <% }) %>
+</ul>

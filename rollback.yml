@@ -1,9 +1,0 @@
----
-- name: Rollback docs.ongr.io
-  hosts: stage
-  remote_user: dev
-  vars:
-    ansistrano_deploy_to: "/var/www/docs"
-    ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/app/deploy/after-symlink.yml"
-  roles:
-    - { role: carlosbuenosvinos.ansistrano-rollback }

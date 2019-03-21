@@ -1,0 +1,5 @@
+site_description: "ONGR Documentation"
+google_analytics:
+root_domain: docs.ongr.io
+vue_version: 0.1.0
+lib_name: ongr-docs
