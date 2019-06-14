@@ -1,0 +1,16 @@
+<div class="sidebar">
+    <ul class="main-menu">
+        <%- partial('partials/main_menu', { context: 'sidebar' }) %>
+    </ul>
+    <div class="list">
+        <% if(page.type) { %>
+        <%- partial('partials/toc', { type: page.type, title: 'Elasticsearch bundle' }) %>
+        <% } %>
+        <ul class="menu-root">
+            <li><h3>Other bundles</h3></li>
+            <li>
+                <a href="/elasticsearch-bundle" class="sidebar-link">ElasticSearch bundle</a>
+            </li>
+        </ul>
+    </div>
+</div>
