@@ -131,7 +131,7 @@ class MyIndex
 > It is not mandatory to have private properties, public will work as well.
  However, we firmly recommend using private according to OOP best practices.  
 
-#### Document annotation configuration
+#### Document/Class annotation configuration
 
 `@ES\Index` Annotation has these parameters:
 
@@ -143,7 +143,7 @@ class MyIndex
 - `numberOfReplicas` - number of replicas for the index.
 
 
-### Properties annotations
+### Property annotation configuration
 
 For defining type properties, there is a `@ES\Property` annotation. The only required
 attribute is `type` - Elasticsearch field type to specify what kind of information
@@ -155,6 +155,7 @@ Here's the list of all available parameters:
 - `analyzer` - analyzer name to use from the list of analyzers configuration of built it analyzer from elastic.
 - `searchAnalyzer` - the same as analyzer but dedicated for search.
 - `searchQuoteAnalyzer` - the same as analyzer but dedicated for search quote.
+- `fields` - allow to define additional fields with different analyzers within the same field.
 
 > Read more about elasticsearch supported types [in the official documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
 
@@ -175,18 +176,13 @@ class MyIndex
     /**
      * @ES\Property(
         type="text",
-        "analyzer":"incrementalAnalyzer"
+        analyzer="incrementalAnalyzer"
      })
      */
     private $title;
     
     //....
 ```
-
->  `options` container accepts any parameters in annotation array format. We leave mapping validation
- to elasticsearch and elasticsearch-php client. If there will be invalid format annotations reader will throw exception,
- otherwise elasticsearch-php or elasticsearch database will throw an exception if something is wrong.
-
 
 #### Object and Nested types
 
@@ -421,12 +417,11 @@ Lets take a look at example below:
      * @ES\Property(
      *  type="text",
      *  name="title",
-     *  options={
-     *    "analyzer"="incrementalAnalyzer",
-     *    "fields"={
-     *        "raw"={"type"="keyword"},
-     *        "standard"={"type"="text", "analyzer"="standard"}
-     *    }
+     *  analyzer="incrementalAnalyzer",
+     *  fields={
+     *    "keyword"={"type"="keyword"},
+     *    "text"={"type"="text", "analyzer"="standard"}
+     *    "anything_else"={"type"="text", "analyzer"="custom"}
      *  }
      * )
      */
@@ -445,12 +440,16 @@ The mapping in elasticsearch would look like this:
                 "type": "text",
                 "analyzer": "incrementalAnalyzer",
                 "fields": {
-                    "raw": {
+                    "keyword": {
                         "type": "keyword"
                     },
-                    "standard": {
+                    "text": {
                         "type": "text",
                         "analyzer": "standard"
+                    },
+                    "anything_else": {
+                        "type": "text",
+                        "analyzer": "custom"
                     }
                 }
             }
@@ -463,20 +462,21 @@ You will notice that now title value is mapped both with and without the analyze
 look like this:
 
 ```php
+        //..
         $query = new TermQuery('title', 'Bar');
         $search->addQuery($query);
 
         $result1 = $repo->execute($search);
 
-        $query = new MatchQuery('title.raw', 'Bar');
+        $query = new MatchQuery('title.keyword', 'Bar');
         $search->addQuery($query);
 
         $result2 = $repo->execute($search);
 
-        $query = new MatchQuery('title.standard', 'Bar');
+        $query = new MatchQuery('title.text', 'Bar');
         $search->addQuery($query);
 
-        $result3 = $repo->execute($search);
+        $result3 = $index->execute($search);
 ```
 
 ### Meta-Fields Annotations

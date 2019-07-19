@@ -64,7 +64,7 @@ ongr_elasticsearch:
                 - 127.0.0.1:9200
 ```
 
-The configuration might be handy if you want to set an index alias name from `.env` parameters. 
+The configuration might be handy if you want to set an index alias name or other parameter from `.env` or ENV. 
 
 
 #### Step 3: Define your Elasticsearch types as `Document` objects
@@ -79,7 +79,7 @@ namespace App\Document;
 use ONGR\ElasticsearchBundle\Annotation as ES;
 
 /**
- * @ES\Document()
+ * @ES\Index(alias="my_product")
  */
 class Product
 {

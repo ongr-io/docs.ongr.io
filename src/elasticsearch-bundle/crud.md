@@ -121,6 +121,6 @@ Alternatively you can remove document by ID (requires to have repository service
 
 ```php
 
-$content = $repo->remove(5);
+$content = $index->remove(5);
 
 ```
