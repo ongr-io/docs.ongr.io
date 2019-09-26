@@ -3,10 +3,10 @@
 ## Source: https://github.com/tommy351/hexo/
 
 # Site
-title: Infection
+title: ONGR
 subtitle:
-description: "PHP Mutation Testing Framework"
-author: Maks Rafalko
+description: "Symfony bundles for Elasticsearch"
+author: Simonas Šerlinskas
 email:
 language:
 

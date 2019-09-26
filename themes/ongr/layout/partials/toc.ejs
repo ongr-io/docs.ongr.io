@@ -11,9 +11,4 @@
         </li>
     <% }) %>
     <li><h3>Other bundles</h3></li>
-    <% site.posts.sort('date', -1).each(function (p) { %>
-        <li>
-            <a href="<%- url_for(p.path) %>" class="sidebar-link"><%- p.title %></a>
-        </li>
-    <% }) %>
 </ul>
